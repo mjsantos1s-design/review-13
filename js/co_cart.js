@@ -1,0 +1,74 @@
+"use strict";
+
+/*
+   New Perspectives on HTML5, CSS3, and JavaScript 6th Edition
+   Tutorial 13
+   Review Assigment
+
+   Shopping Cart Form Script
+   
+   Author: Michael Santos
+   Date:   
+   
+   Filename: co_cart.js
+   
+   Function List
+   =============
+   
+   calcCart()
+      Calculates the cost of the customer order
+      
+   formatNumber(val, decimals)
+      Format a numeric value, val, using the local
+      numeric format to the number of decimal
+      places specified by decimals
+      
+   formatUSACurrency(val)
+      Formats val as U.S.A. currency
+   
+*/ 
+ 
+
+//4-6 are here
+
+window.addEventListener("load", function() {
+calcCart()
+   orderForm.elements.model.onchange = calcCart;
+   orderForm.elements.qty.onchange = calcCart;
+
+   var planOptions = document.querySelectorAll('input[name="protection"]');
+   for (var i = 0; i < planOptions.length; i++) {
+      planOptions[i].onclick = calcCart;
+}
+}
+);
+
+function calcCart() {
+   var orderCost = modelQty*quantity;
+   orderCost.elements.orderCost.value = formatUSCurrency(modelCost);
+
+   var shipCost = ;
+
+      //Calculate the order subtotal
+   orderForm.elements.subtotal.value = formatUSCurrency(orderCost + shipCost, 2);
+
+   //Calculate the sales tax
+   var salesTax = 0.05*(orderCost + shipCost);
+   orderForm.elements.salesTax.value = formatUSCurrency(salesTax, 2);
+}
+
+
+
+
+
+
+
+
+function formatNumber(val, decimals) {
+   return val.toLocaleString(undefined, {minimumFractionDigits: decimals, 
+                                         maximumFractionDigits: decimals});
+}
+
+function formatUSCurrency(val) {
+   return val.toLocaleString('en-US', {style: "currency", currency: "USD"} );
+}
