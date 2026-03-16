@@ -36,7 +36,7 @@ calcCart()
    orderForm.elements.model.onchange = calcCart;
    orderForm.elements.qty.onchange = calcCart;
 
-   var planOptions = document.querySelectorAll('input[name="protection"]');
+   var planOptions = document.querySelectorAll('input[name="shipping"]');
    for (var i = 0; i < planOptions.length; i++) {
       planOptions[i].onclick = calcCart;
 }
@@ -47,7 +47,8 @@ function calcCart() {
    var orderCost = modelQty*quantity;
    orderCost.elements.orderCost.value = formatUSCurrency(modelCost);
 
-   var shipCost = ;
+   var shipCost = //document.querySelector('input[name="shipping"]:checked').value*quantity;
+   orderForm.elements.protectionCost.value = formatUSCurrency(pCost, 2);
 
       //Calculate the order subtotal
    orderForm.elements.subtotal.value = formatUSCurrency(orderCost + shipCost, 2);
@@ -55,14 +56,11 @@ function calcCart() {
    //Calculate the sales tax
    var salesTax = 0.05*(orderCost + shipCost);
    orderForm.elements.salesTax.value = formatUSCurrency(salesTax, 2);
+   
+   //Calculate the cost of the total order
+   var totalCost = orderCost + shipCost + salesTax;
+   orderForm.elements.totalCost.value = formatUSCurrency(totalCost);
 }
-
-
-
-
-
-
-
 
 function formatNumber(val, decimals) {
    return val.toLocaleString(undefined, {minimumFractionDigits: decimals, 
