@@ -48,8 +48,14 @@
 
 
 
-
-
+modelName = orderFields[3];
+modelQty = orderFields[5];
+orderCost = orderFields[7];
+shippingType = orderFields[9];
+shippingCost = orderFields[13];
+subTotal = orderFields[15];
+salesTax = orderFields[17];
+cartTotal = orderFields[19];
 
 
 

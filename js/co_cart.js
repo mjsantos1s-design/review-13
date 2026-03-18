@@ -33,8 +33,7 @@
 
 window.addEventListener("load", function() {
 calcCart()
-   orderForm.elements.model.onchange = calcCart;
-   orderForm.elements.qty.onchange = calcCart;
+   orderForm.elements.modelQty.onchange = calcCart;
 
    var planOptions = document.querySelectorAll('input[name="shipping"]');
    for (var i = 0; i < planOptions.length; i++) {
@@ -44,8 +43,13 @@ calcCart()
 );
 
 function calcCart() {
+   var quantity = document.form.cart;
+   var model = orderForm.elements.qty.selectedIndex;
+   var qty = document.elements.modelQty[qIndex].value;
+
+
    var orderCost = modelQty*quantity;
-   orderCost.elements.orderCost.value = formatUSCurrency(modelCost);
+   orderCost.elements.orderCost.value = formatUSCurrency(orderCost);
 
    var shipCost = //document.querySelector('input[name="shipping"]:checked').value*quantity;
    orderForm.elements.protectionCost.value = formatUSCurrency(pCost, 2);
