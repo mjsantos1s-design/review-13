@@ -46,17 +46,17 @@
 
 //7-11 are here
 
-
-
-modelName = orderFields[3];
-modelQty = orderFields[5];
-orderCost = orderFields[7];
-shippingType = orderFields[9];
-shippingCost = orderFields[13];
-subTotal = orderFields[15];
-salesTax = orderFields[17];
-cartTotal = orderFields[19];
-
+window.addEventListener("load", function(){
+   var
+document.forms.order.elements.modelName.value = orderFields[3];
+document.forms.order.elements.modelQty.value = orderFields[5];
+document.forms.order.elements.orderCost.value = orderFields[7];
+document.forms.order.elements.shippingType.value = orderFields[9];
+document.forms.order.elements.shippingCost.value = orderFields[13];
+document.forms.order.elements.subTotal.value = orderFields[15];
+document.forms.order.elements.salesTax.value = orderFields[17];
+document.forms.order.elements.cartTotal.value = orderFields[19];
+});
 
 
 
