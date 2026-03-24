@@ -33,25 +33,26 @@
 
 window.addEventListener("load", function() {
 calcCart()
-   orderForm.elements.modelQty.onchange = calcCart;
+   cartForm.elements.modelQty.onchange = calcCart;
 
-   var planOptions = document.querySelectorAll('input[name="shipping"]');
-   for (var i = 0; i < planOptions.length; i++) {
-      planOptions[i].onclick = calcCart;
-}
-}
-);
+   var shippingOptions = document.querySelectorAll('input[name="shipping"]');
+   for (var i = 0; i < shippingOptions.length; i++) {
+      shippingnOptions[i].onclick = calcCart;
+   }
+});
 
 function calcCart() {
-   var quantity = document.form.cart;
-   var model = orderForm.elements.qty.selectedIndex;
-   var qty = document.elements.modelQty[qIndex].value;
+   var cartForm = document.forms.cart;
+
+   var mCost = cartForm.elements.modelCost.value;
+   var qIndex = cartForm.elements.modelQty.selectedIndex;
+   var quantity = cartForm.elements.modelQty[qIndex].value;
 
 
-   var orderCost = modelQty*quantity;
-   orderCost.elements.orderCost.value = formatUSCurrency(orderCost);
+   var orderCost = mCost*quantity;
+   cartForm.elements.orderCost.value = formatUSCurrency(orderCost);
 
-   var shipCost = //document.querySelector('input[name="shipping"]:checked').value*quantity;
+   var shipCost = document.querySelector('input[name="shipping"]:checked').value*quantity;
    orderForm.elements.protectionCost.value = formatUSCurrency(pCost, 2);
 
       //Calculate the order subtotal
