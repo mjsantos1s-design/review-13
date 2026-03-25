@@ -29,8 +29,6 @@
 */ 
  
 
-//4-6 are here
-
 window.addEventListener("load", function() {
 calcCart()
    cartForm.elements.modelQty.onchange = calcCart;
@@ -53,14 +51,14 @@ function calcCart() {
    cartForm.elements.orderCost.value = formatUSCurrency(orderCost);
 
    var shipCost = document.querySelector('input[name="shipping"]:checked').value*quantity;
-   orderForm.elements.protectionCost.value = formatUSCurrency(pCost, 2);
+   cartForm.elements.protectionCost.value = formatUSCurrency(shipCost, 2);
 
       //Calculate the order subtotal
-   orderForm.elements.subtotal.value = formatUSCurrency(orderCost + shipCost, 2);
+   cartForm.elements.subtotal.value = formatUSCurrency(orderCost + shipCost, 2);
 
    //Calculate the sales tax
    var salesTax = 0.05*(orderCost + shipCost);
-   orderForm.elements.salesTax.value = formatUSCurrency(salesTax, 2);
+   cartForm.elements.salesTax.value = formatUSCurrency(salesTax, 2);
    
    //Calculate the cost of the total order
    var totalCost = orderCost + shipCost + salesTax;
