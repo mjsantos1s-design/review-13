@@ -51,18 +51,18 @@ function calcCart() {
    cartForm.elements.orderCost.value = formatUSCurrency(orderCost);
 
    var shipCost = document.querySelector('input[name="shipping"]:checked').value*quantity;
-   cartForm.elements.protectionCost.value = formatUSCurrency(shipCost, 2);
+   cartForm.elements.shippingCost.value = formatNumber(shipCost, 2);
 
       //Calculate the order subtotal
-   cartForm.elements.subtotal.value = formatUSCurrency(orderCost + shipCost, 2);
+   cartForm.elements.subTotal.value = formatUSCurrency(orderCost + shipCost, 0.001);
 
    //Calculate the sales tax
    var salesTax = 0.05*(orderCost + shipCost);
    cartForm.elements.salesTax.value = formatUSCurrency(salesTax, 2);
    
    //Calculate the cost of the total order
-   var totalCost = orderCost + shipCost + salesTax;
-   orderForm.elements.totalCost.value = formatUSCurrency(totalCost);
+   var cartTotal = orderCost + shipCost + salesTax;
+   cartForm.elements.cartTotal.value = formatUSCurrency(cartTotal);
 }
 
 function formatNumber(val, decimals) {
