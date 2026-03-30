@@ -30,12 +30,15 @@
  
 
 window.addEventListener("load", function() {
+   var cartForm = this.document.forms.cart;
+
 calcCart()
+
    cartForm.elements.modelQty.onchange = calcCart;
 
    var shippingOptions = document.querySelectorAll('input[name="shipping"]');
    for (var i = 0; i < shippingOptions.length; i++) {
-      shippingnOptions[i].onclick = calcCart;
+      shippingOptions[i].onclick = calcCart;
    }
 });
 
@@ -54,7 +57,7 @@ function calcCart() {
    cartForm.elements.shippingCost.value = formatNumber(shipCost, 2);
 
       //Calculate the order subtotal
-   cartForm.elements.subTotal.value = formatUSCurrency(orderCost + shipCost, 0.001);
+   cartForm.elements.subTotal.value = formatUSCurrency(orderCost + shipCost, 2);
 
    //Calculate the sales tax
    var salesTax = 0.05*(orderCost + shipCost);
@@ -63,6 +66,10 @@ function calcCart() {
    //Calculate the cost of the total order
    var cartTotal = orderCost + shipCost + salesTax;
    cartForm.elements.cartTotal.value = formatUSCurrency(cartTotal);
+
+   //Store the order details
+   cartForm.elements.shippingType.value =
+      document.querySelector('input[name="shipping"]:checked').nextSibling.nodeValue;
 }
 
 function formatNumber(val, decimals) {
