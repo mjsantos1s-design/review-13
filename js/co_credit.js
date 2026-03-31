@@ -49,7 +49,7 @@
 window.addEventListener("load", function(){
    var orderData = location.search.slice(1);
    orderData = orderData.replace(/\+/g," ");
-   orderData = decodeURIComponent(formData);
+   orderData = decodeURIComponent(orderData);
    var orderFields = orderData.split(/[&=]/g);
 
 document.forms.order.elements.modelName.value = orderFields[3];

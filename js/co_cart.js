@@ -32,7 +32,7 @@
 window.addEventListener("load", function() {
    var cartForm = this.document.forms.cart;
 
-calcCart()
+calcCart();
 
    cartForm.elements.modelQty.onchange = calcCart;
 
@@ -57,11 +57,11 @@ function calcCart() {
    cartForm.elements.shippingCost.value = formatNumber(shipCost, 2);
 
       //Calculate the order subtotal
-   cartForm.elements.subTotal.value = formatUSCurrency(orderCost + shipCost, 2);
+   cartForm.elements.subTotal.value = formatNumber(orderCost + shipCost, 2);
 
    //Calculate the sales tax
    var salesTax = 0.05*(orderCost + shipCost);
-   cartForm.elements.salesTax.value = formatUSCurrency(salesTax, 2);
+   cartForm.elements.salesTax.value = formatNumber(salesTax, 2);
    
    //Calculate the cost of the total order
    var cartTotal = orderCost + shipCost + salesTax;
